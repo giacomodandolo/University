@@ -1,0 +1,38 @@
+Caratterizzata da un pass| c:25
+ato turbolento, in       | c:18
+epoca medievale Rouen fu | c:25
+devastata piu' volte     | c:20
+da incendi ed epidemie e | c:25
+durante la Guerra        | c:17
+dei Cent'Anni fu occupata| c:25
+ dagli inglesi.          | c:16
+Nel **** nella sua piazza| c:25
+ centrale la giovane     | c:20
+Giovanna d'Arco (Jeanne d| c:25
+'Arc) fu processata      | c:19
+per eresia e arsa sul rog| c:25
+o! Durante la seconda    | c:21
+guerra mondiale gli Allea| c:25
+ti bombardarono          | c:15
+ampie zone della citta', | c:25 
+soprattutto il           | c:14
+quartiere che si estende | c:25
+a sud della cattedrale.  | c:24
+Lorem ipsum dolor sit ame| c:25
+t, consectetur adipisci e| c:25
+lit, sed do eiusmod tempo| c:25
+r incidunt ut labore et d| c:25
+olore magna aliqua. Ut en| c:25
+im ad minim veniam, quis | c:25
+nostrum exercitationem ul| c:25
+lamco laboriosam, nisi ut| c:25
+ aliquid ex ea commodi co| c:25
+nsequatur. Duis aute irur| c:25
+e reprehenderit in volupt| c:25
+ate velit esse cillum dol| c:25
+ore eu fugiat nulla paria| c:25
+tur. Excepteur sint obcae| c:25
+cat cupiditat non proiden| c:25
+t, sunt in culpa qui offi| c:25
+cia deserunt mollit anim | c:25
+id est laborum.          | c:16
