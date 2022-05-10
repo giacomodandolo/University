@@ -121,7 +121,7 @@ int main() {
 	printf("Termino il programma...\n");
 
 	// libera memoria
-	for(i=0; i<nr; i++){
+	for(i=0; i < nr; i++){
 		 free(matrix[i]);
 	}
 	free(matrix);
@@ -177,8 +177,8 @@ void trovaSottomatriceMax(int **matrix, int nr, int nc, int dim) {
 
 int sommaSottomatrice(int **matrix, int **tempMatrix, int r, int c, int dim) {
 	int i, j, sum = 0;
-	for(i = r; i < r+dim; i++) {
-		for(j = c; j < c+dim; j++) {
+	for(i = r; i < r + dim; i++) {
+		for(j = c; j < c + dim; j++) {
 			sum += matrix[i][j];
 			tempMatrix[i-r][j-c] = matrix[i][j];
 		}
