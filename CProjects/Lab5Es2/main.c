@@ -54,9 +54,12 @@ int main() {
       return 2;
    }
 
+   // allocazione memoria dizionario di strutture
    codifica** diz = (codifica**)calloc(S, sizeof(codifica*));
    for(i = 0; i < S; i++) {
+      // allocazione memoria per ogni struttura
       diz[i] = (codifica*)calloc(1, sizeof(codifica));
+      // ottenimento informazioni dal file e inserimento in singola struct
       fscanf(fDiz, " %s %s ", diz[i]->codice, diz[i]->originale);
    }
    fclose(fDiz);
