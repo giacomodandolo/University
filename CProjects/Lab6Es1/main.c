@@ -5,11 +5,11 @@
 #define fileName "corse.txt"
 
 const char menu[415+1] =	"1. Elenca tutte le corse partite in un certo intervallo di date;\n"
-						 		"2. Elenca tutte le corse partite da una certa fermata;\n"
-								"3. Elenca tutte le corse aventi una data destinazione (capolinea);\n"
-								"4. Elenca tutte le corse che hanno raggiunto la destinazione in ritardo, in un certo intervallo di date;\n"
-								"5. Elenca il ritardo complessivo accumulato dalle corse identificate da un certo codice di tratta;\n"
-								"6. Termina il programma.\n";
+						 			"2. Elenca tutte le corse partite da una certa fermata;\n"
+									"3. Elenca tutte le corse aventi una data destinazione (capolinea);\n"
+									"4. Elenca tutte le corse che hanno raggiunto la destinazione in ritardo, in un certo intervallo di date;\n"
+									"5. Elenca il ritardo complessivo accumulato dalle corse identificate da un certo codice di tratta;\n"
+									"6. Termina il programma.\n";
 const char header[131+1] = "| CODICE |            PARTENZA            |          DESTINAZIONE          |    DATA    | ORA PARTENZA | ORA ARRIVO | RITARDO (min)";
 
 /*

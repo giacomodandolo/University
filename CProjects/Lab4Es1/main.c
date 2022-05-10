@@ -1,9 +1,23 @@
 #include <stdio.h>
 #define nomeFile "input.txt"
 
+/*
+ * Cerca i sottovettori di dimensione massima
+ *
+ * V = vettore
+ * N = dimensione del vettore
+ */
 void sottoSequenze(int V[], int N);
 
-void stampaArray(int v[], int N);
+/*
+ * Stampa il vettore a partire dall'indice i
+ * e fino all'indice N
+ *
+ * V = vettore
+ * i = indice di inizio
+ * f = indice di fine
+ */
+void stampaVettore(int V[], int i, int f);
 
 int main() {
    int N;
@@ -60,12 +74,16 @@ void sottoSequenze(int V[], int N) {
    printf("I sottovettori di dimensione %d sono: \n", lMax);
    for(int i = 0; i < N; i++) {
       if(v2[i] == lMax) {
-         printf("[ ");
-         for(int j = 0; j < lMax; j++) {
-            printf("%d ", V[i+j]);
-         }
-         printf("]\n");
+         stampaVettore(V, i, lMax);
       }
    }
    return;
+}
+
+void stampaVettore(int V[], int i, int f) {
+   printf("[ ");
+   for(int j = 0; j < f; j++) {
+      printf("%d ", V[i+j]);
+   }
+   printf("]\n");
 }

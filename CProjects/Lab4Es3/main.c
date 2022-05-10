@@ -25,7 +25,7 @@ void trovaSottomatriceMax(int **matrix, int nr, int nc, int dim);
 
 /**
  * somma gli elementi della sottomatrice quadrata di coordinate
- *	[r -> r+dim][c -> c+dim]
+ *	[r -> r+dim][c -> c+dim] e la ritorna
  *
  * matrix = matrice totale
  * tempMatrix = matrice temporanea

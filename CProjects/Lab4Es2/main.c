@@ -1,15 +1,33 @@
 #include <stdio.h>
 #define maxN 30
 
-void ruota(int v[maxN], int N, int P, int dir);
-void stampaArray(int v[maxN], int N);
+/*
+ * Ruota il vettore di P posizioni verso
+ * la direzione dir
+ *
+ * v = vettore
+ * N = dimensione del vettore
+ * P = numero posizioni (<N)
+ * dir = direzione {-1, 1}
+ */
+void ruota(int v[], int N, int P, int dir);
+
+/*
+ * Stampa il vettore
+ *
+ * v = vettore
+ * N = dimensione del vettore
+ */
+void stampaVettore(int v[], int N);
 
 int main() {
-	int N, P, dir, v[maxN], i;
+	int N, P, dir, i;
 	do {
 		printf("Inserisci la quantita' di valori: ");
 		scanf("%d", &N);
 	} while(N < 0 || N > maxN);
+
+	int v[N];
 
 	for(i = 0; i < N; i++) {
 		printf("Inserisci il valore #%d: ", i+1);
@@ -27,7 +45,7 @@ int main() {
 				scanf("%d", &dir);
 			} while(dir != 1 && dir != -1);
 			ruota(v, N, P, dir);
-			stampaArray(v, N);
+			stampaVettore(v, N);
 		} else {
 			printf("Termino il programma...\n");
 		}
@@ -35,7 +53,7 @@ int main() {
 	return 0;
 }
 
-void ruota(int v[maxN], int N, int P, int dir) {
+void ruota(int v[], int N, int P, int dir) {
 	// init e initCond necessario per i casi di "parità"
 	int newP = 0, i = 0, init = 0, initCond = 0;
 	int t1, t2;
@@ -66,7 +84,7 @@ void ruota(int v[maxN], int N, int P, int dir) {
 	}
 }
 
-void stampaArray(int v[maxN], int N) {
+void stampaVettore(int v[], int N) {
 	printf("Stato del vettore: ");
 	for(int i = 0; i < N; i++) {
 		printf("%d ", v[i]);
