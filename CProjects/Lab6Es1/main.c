@@ -88,7 +88,7 @@ int main() {
    corsa** log = (corsa**)calloc(N, sizeof(corsa*));
    for(i = 0; i < N; i++) {
       log[i] = (corsa*)calloc(1, sizeof(corsa));
-      fscanf(fLog, " %6s %30s %30s %30s %30s %30s %d", log[i]->codice, log[i]->partenza, log[i]->destinazione, log[i]->data, log[i]->oraPartenza, log[i]->oraArrivo, &log[i]->ritardo);
+      fscanf(fLog, " %6s %30s %30s %10s %10s %8s %d", log[i]->codice, log[i]->partenza, log[i]->destinazione, log[i]->data, log[i]->oraPartenza, log[i]->oraArrivo, &log[i]->ritardo);
    }
    fclose(fLog);
 
