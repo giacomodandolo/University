@@ -15,11 +15,10 @@ typedef enum {FALSE, TRUE} bool;
 void trovaRettangoli(int** matrix, int nr, int nc, rettangolo *max_b, rettangolo *max_h, rettangolo *max_a);
 void cpyRettangolo(rettangolo *rett, int p_x, int p_y, int b, int h, int a);
 void stampaRettangolo(rettangolo *rett);
-void stampaMatrice(int **matrix, int nr, int nc);
 
 int main() {
 	rettangolo *max_b, *max_h, *max_a;
-	int i, j, nr, nc, temp;
+	int i, j, nr, nc, temp, ret = 0;
 	FILE* file;
 
 	max_b = (rettangolo*)calloc(1, sizeof(rettangolo));
@@ -41,15 +40,20 @@ int main() {
 			fscanf(file, " %d ", &nc);
 		} else {
 			printf("Nel file non sono presenti i valori necessari. Termino il programma.\n");
-			return 2;
+			ret = 2;
 		}
 	} else {
 		printf("Nel file non sono presenti i valori necessari. Termino il programma.\n");
-		return 3;
+		ret = 3;
+	}
+
+	if(ret != 0) {
+		fclose(file);
+		return ret;
 	}
 
 	int **matrix = (int**)calloc(nr, sizeof(int*));
-	for(i = 0; i < nr; i++) {
+	for(i = 0; i < nr && ret == 0; i++) {
 		matrix[i] = (int*)calloc(nc, sizeof(int));
 		for(j = 0; j < nc; j++) {
 			if(!feof(file)) {
@@ -58,20 +62,29 @@ int main() {
 					matrix[i][j] = temp;
 				} else {
 					printf("E' stato letto un valore non valido. Termino il programma.\n");
-					return 4;
+					ret = 4;
+					break;
 				}
+			} else {
+				printf("Nel file non sono presenti i valori necessari. Termino il programma.\n");
+				ret = 5;
+				break;
 			}
 		}
 	}
 
 	fclose(file);
+	if(ret != 0) {
+		return ret;
+	}
 
 	trovaRettangoli(matrix, nr, nc, max_b, max_h, max_a);
-	printf("Max Base: ");
+
+	printf("Max Base: \t");
 	stampaRettangolo(max_b);
-	printf("Max Altezza: ");
+	printf("Max Altezza: \t");
 	stampaRettangolo(max_h);
-	printf("Max Area: ");
+	printf("Max Area: \t");
 	stampaRettangolo(max_a);
 	return 0;
 }
@@ -79,6 +92,7 @@ int main() {
 void trovaRettangoli(int **matrix, int nr, int nc, rettangolo *max_b, rettangolo *max_h, rettangolo *max_a) {
 	int i, j, tempI, tempJ, b = 0, h = 0, a;
 	bool countB;
+
 	for(i = 0; i < nr; i++) {
 		for(j = 0; j < nc; j++) {
 			countB = TRUE;
