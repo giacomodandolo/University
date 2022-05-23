@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #define inputFile "mappa.txt"
 
+/*
+ * struttura del rettangolo
+ *
+ * p_x = coordinata x
+ * p_y = coordinata y
+ * b = base
+ * h = altezza
+ * a = area
+ */
 typedef struct {
 	int p_x;
 	int p_y;
@@ -10,15 +19,47 @@ typedef struct {
 	int a;
 } rettangolo;
 
-typedef enum {FALSE, TRUE} bool;
+/*
+ * struttura del booleano
+ */
+typedef enum {FALSE = 0, TRUE} bool;
 
+/*
+ * ricerca i rettangoli con base massima, altezza massima
+ * e area massima nella matrice
+ *
+ * matrix = matrice in cui cercare
+ * nr = numero righe
+ * nc = numero colonne
+ * max_b = rettangolo con base maggiore
+ * max_h = rettangolo con altezza maggiore
+ * max_a = rettangolo con area maggiore
+ */
 void trovaRettangoli(int** matrix, int nr, int nc, rettangolo *max_b, rettangolo *max_h, rettangolo *max_a);
+
+/*
+ * copia in rettangolo i valori passati dei campi
+ *
+ * rett = struttura del rettangolo in cui copiare
+ * p_x = coordinata x
+ * p_y = coordinata y
+ * b = base
+ * h = altezza
+ * a = area
+ */
 void cpyRettangolo(rettangolo *rett, int p_x, int p_y, int b, int h, int a);
+
+/*
+ * stampa i campi della struttura rettangolo
+ *
+ * rett = rettangolo da stampare
+ */
 void stampaRettangolo(rettangolo *rett);
 
 int main() {
 	rettangolo *max_b, *max_h, *max_a;
 	int i, j, nr, nc, temp, ret = 0;
+	bool boolRett = FALSE;
 	FILE* file;
 
 	max_b = (rettangolo*)calloc(1, sizeof(rettangolo));
@@ -60,6 +101,7 @@ int main() {
 				fscanf(file, " %d ", &temp);
 				if(temp == 0 || temp == 1) {
 					matrix[i][j] = temp;
+					boolRett = TRUE;
 				} else {
 					printf("E' stato letto un valore non valido. Termino il programma.\n");
 					ret = 4;
@@ -74,6 +116,13 @@ int main() {
 	}
 
 	fclose(file);
+	/*
+	 * se non è presente un rettangolo nella matrice,
+	 * non esegue il codice successivo
+	 */
+	if(!boolRett) {
+		return 6;
+	}
 	if(ret != 0) {
 		return ret;
 	}
@@ -105,11 +154,11 @@ void trovaRettangoli(int **matrix, int nr, int nc, rettangolo *max_b, rettangolo
 						b++;
 					}
 					tempJ++;
-					if(tempJ >= nc || matrix[tempI][tempJ] == 0) {
+					if(tempJ >= nc || matrix[tempI][tempJ] == 0) { // se cambia riga
 						tempI++;
 						tempJ = j;
 						h++;
-						countB = FALSE;
+						countB = FALSE; // smette di contare per la base
 					}
 					if(tempI >= nr) {
 						break;

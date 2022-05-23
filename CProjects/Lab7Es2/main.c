@@ -2,9 +2,42 @@
 #include <stdlib.h>
 #define fSort "sort.txt"
 
+/*
+ * esegue l'algoritmo "selection sort"
+ * e stampa gli scambi e le iterazioni del ciclo
+ * interno, esterno e totali
+ *
+ * v = vettore da ordinare
+ * n = dimensione del vettore
+ */
 void selectionSort(int *v, int n);
+
+/*
+ * esegue l'algoritmo "insertion sort"
+ * e stampa gli scambi e le iterazioni del ciclo
+ * interno, esterno e totali
+ *
+ * v = vettore da ordinare
+ * n = dimensione del vettore
+ */
 void insertionSort(int *v, int n);
+
+/*
+ * esegue l'algoritmo "shell sort"
+ * e stampa gli scambi e le iterazioni del ciclo
+ * interno, esterno e totali
+ *
+ * v = vettore da ordinare
+ * n = dimensione del vettore
+ */
 void shellSort(int *v, int n);
+
+/*
+ * stampa il vettore
+ *
+ * v = vettore da stampare
+ * n = dimensione del vettore
+ */
 void stampaVettore(int *v, int n);
 
 int main() {
@@ -44,6 +77,7 @@ int main() {
             return 4;
          }
       }
+
       printf("SEQUENZA %d:\n", i+1);
       selectionSort(v1, m);
       printf("\n");

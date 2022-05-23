@@ -3,6 +3,15 @@
 #define inputFile "mappa.txt"
 #define MAXR 50
 
+/*
+ * struttura del rettangolo
+ *
+ * p_x = coordinata x
+ * p_y = coordinata y
+ * b = base
+ * h = altezza
+ * a = area
+ */
 typedef struct {
 	int p_x;
 	int p_y;
@@ -11,12 +20,59 @@ typedef struct {
 	int a;
 } rettangolo;
 
+/*
+ * struttura del booleano
+ */
 typedef enum {FALSE = 0, TRUE} bool;
 
 bool leggiMatrice(int M[MAXR][MAXR], int *nr, int *nc);
+
+/*
+ * riconosce se la cella in coordinata (r,c)
+ * è un estremo superiore sinistro
+ * e se lo è, ricava base e altezza
+ * del rettangolo
+ *
+ * M = matrice
+ * nr = numero righe
+ * nc = numero colonne
+ * r = coordinata x della cella
+ * c = coordinata y della cella
+ * b = base (puntatore)
+ * h = altezza (puntatore)
+ */
 bool riconosciRegione(int M[MAXR][MAXR], int nr, int nc, int r, int c, int *b, int *h);
+
+/*
+ * ricerca i rettangoli con base massima, altezza massima
+ * e area massima nella matrice
+ *
+ * M = matrice in cui cercare
+ * nr = numero righe
+ * nc = numero colonne
+ * max_b = rettangolo con base maggiore
+ * max_h = rettangolo con altezza maggiore
+ * max_a = rettangolo con area maggiore
+ */
 void trovaRettangoli(int M[MAXR][MAXR], int nr, int nc, rettangolo *max_b, rettangolo *max_h, rettangolo *max_a);
+
+/*
+ * copia in rettangolo i valori passati dei campi
+ *
+ * rett = struttura del rettangolo in cui copiare
+ * p_x = coordinata x
+ * p_y = coordinata y
+ * b = base
+ * h = altezza
+ * a = area
+ */
 void cpyRettangolo(rettangolo *rett, int p_x, int p_y, int b, int h, int a);
+
+/*
+ * stampa i campi della struttura rettangolo
+ *
+ * rett = rettangolo da stampare
+ */
 void stampaRettangolo(rettangolo *rett);
 
 int main() {
@@ -94,7 +150,8 @@ bool leggiMatrice(int M[MAXR][MAXR], int *nr, int *nc) {
 }
 
 bool riconosciRegione(int M[MAXR][MAXR], int nr, int nc, int r, int c, int *b, int *h) {
-   if(r > 0 && M[r-1][c] == 1) {
+	// se non è un estremo sinistro, termina la funzione
+	if(r > 0 && M[r-1][c] == 1) {
       return FALSE;
    }
    if(c > 0 && M[r][c-1] == 1) {
@@ -137,6 +194,7 @@ void trovaRettangoli(int M[MAXR][MAXR], int nr, int nc, rettangolo *max_b, retta
 	for(i = 0; i < nr; i++) {
 		for(j = 0; j < nc; j++) {
 			countB = TRUE;
+			// se trova una regione, esegue i calcoli
          if(riconosciRegione(M, nr, nc, i, j, &b, &h)) {
             a = b * h;
             cpyRettangolo(rett, i, j, b, h, a);
