@@ -77,6 +77,7 @@ int main() {
             return 4;
          }
       }
+      stampaVettore(v1+2, m);
 
       printf("SEQUENZA %d:\n", i+1);
       selectionSort(v1, m);
