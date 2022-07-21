@@ -20,7 +20,7 @@ int dayToNumber(char day[10]) {
 }
 
 char* numberToDay(int day) {
-   return giorni[day];
+   return &giorni[day][0];
 }
 /* fine codice aggiunto */
 
